@@ -18,6 +18,14 @@ def get_response(endPoint, params=None, timeout=None):
     if vim.eval('exists("b:OmniSharp_host")') == '1':
         host = vim.eval('b:OmniSharp_host')
 
+    '''
+    try:
+        from ycm.client.base_request import BaseRequest, BuildRequestData
+        host = BaseRequest.server_location
+    except:
+        pass
+    '''
+
     target = urlparse.urljoin(host, endPoint)
     data = urllib.urlencode(parameters).encode('utf-8')
 
