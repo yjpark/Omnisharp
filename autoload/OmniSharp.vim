@@ -156,9 +156,8 @@ function! OmniSharp#TypeLookup(includeDocumentation)
 
 	if g:OmniSharp_typeLookupInPreview || a:includeDocumentation == 'True'
         python typeLookup("type")
-        copen 4
-		" call s:GoScratch()
-		" python vim.current.window.height = 5
+		call s:GoScratch()
+		python vim.current.window.height = 5
 		set modifiable
 		exec 'python vim.current.buffer[:] = ["' . type . '"] + """' . s:documentation . '""".splitlines()'
 		set nomodifiable
